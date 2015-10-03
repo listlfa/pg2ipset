@@ -51,8 +51,10 @@ importList(){
 	#the second param determines if we need to use zcat or not
 	echo "IF..."
 	if [ $2 = 1 ]; then
+		echo "...zcat $LISTDIR/$1.gz"
 		zcat $LISTDIR/$1.gz | grep  -v \# | grep -v ^$ | grep -v 127\.0\.0 | pg2ipset - - $1-TMP | ipset restore
 	else
+		echo "...awk '!x[$0]++' "
 		awk '!x[$0]++' $LISTDIR/$1.txt | grep  -v \# | grep -v ^$ |  grep -v 127\.0\.0 | sed -e "s/^/add\ \-exist\ $1\-TMP\ /" | ipset restore
 	fi
 	
@@ -62,8 +64,9 @@ importList(){
 	ipset destroy $1-TMP &> /dev/null
 	
 	# only create if the iptables rules don't already exist
-	echo "if ! echo $IPTABLES"
+	echo "if ! echo $IPTABLES..."
 	if ! echo $IPTABLES|grep -q "\-A\ INPUT\ \-m\ set\ \-\-match\-set\ $1\ src\ \-\j\ DROP"; then
+	echo "...if ! echo $IPTABLES"
           iptables -A INPUT -m set --match-set $1 src -j ULOG --ulog-prefix "Blocked input $1"
           iptables -A FORWARD -m set --match-set $1 src -j ULOG --ulog-prefix "Blocked fwd $1"
           iptables -A FORWARD -m set --match-set $1 dst -j ULOG --ulog-prefix "Blocked fwd $1"
