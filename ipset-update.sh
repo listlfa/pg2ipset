@@ -14,8 +14,8 @@ COUNTRIES=(af ae ir iq tr cn sa sy ru ua hk id kz kw ly)
 
 # bluetack lists to use - they now obfuscate these so get them from
 # https://www.iblocklist.com/lists.php
-BLUETACKALIAS=(DShield Bogon Hijacked DROP ForumSpam WebExploit Ads Proxies BadSpiders CruzIT Zeus Palevo Malicious Malcode Adservers)
-BLUETACK=(xpbqleszmajjesnzddhv lujdnbasfaaixitgmxpp usrcshglbiilevmyfhse zbdlwrqkabxbcppvrnos ficutxiwawokxlcyoeye ghlzqtqxnzctvvajwwag dgxtneitpuvgqqcpfulq xoebmbyexwuiogmbyprb mcvxsnihddgutbjfbghy czvaehmjpsnwwttrdoyl ynkdjqsjyfmilsgbogqf erqajhwrxiuvjxqrrwfj npkuuhuxcsllnhoamkvm pbqcylkejciyhmwttify zhogegszwduurnvsyhdf) 
+BLUETACKALIAS=(level1)
+BLUETACK=(ydxerpxkpcfqjaybcssw) 
 # ports to block tor users from
 PORTS=(80 443 6667 22 21)
 
@@ -32,7 +32,7 @@ ENABLE_BLUETACK=1
 ENABLE_COUNTRY=0
 
 # enable tor blocks?
-ENABLE_TORBLOCK=1
+ENABLE_TORBLOCK=0
 
 #cache a copy of the iptables rules
 IPTABLES=$(iptables-save)
