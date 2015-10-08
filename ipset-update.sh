@@ -14,8 +14,8 @@ COUNTRIES=(af ae ir iq tr cn sa sy ru ua hk id kz kw ly)
 
 # bluetack lists to use - they now obfuscate these so get them from
 # https://www.iblocklist.com/lists.php
-BLUETACKALIAS=(level1)
-BLUETACK=(ydxerpxkpcfqjaybcssw) 
+BLUETACKALIAS=(level1 level2)
+BLUETACK=(ydxerpxkpcfqjaybcssw gyisgnzbhppbvsphucsw) 
 # ports to block tor users from
 PORTS=(80 443 6667 22 21)
 
